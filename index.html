@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset=utf-8 />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="description"
+		content="Visor del Observatorio Territorial Godoy Cruz, el cual permite la visualización de información geográfica del municipio. Oficina de Planificación Urbana. Mapa de Godoy Cruz.">
+	<meta name="keywords"
+		content="Mapa de Godoy Cruz, Mendoza, Godoy Cruz, Barrios de Godoy Cruz, Distritos, Visor, Observatorio Territorial">
+	<meta name="author" content="Ignacio Diaz">
+	<meta name="copyright" content="Observatorio Territorial Godoy Cruz">
+	<meta name="google-site-verification" content="R5WTMjjt_seNpewDlSVO7I1yKfRtCr6Zb6GUEDB9QLU" />
+	<title>Observatorio Territorial Godoy Cruz</title>
+
+	<!-- Google Tag Manager -->
+	<script>(function (w, d, s, l, i) {
+			w[l] = w[l] || []; w[l].push({
+				'gtm.start':
+					new Date().getTime(), event: 'gtm.js'
+			}); var f = d.getElementsByTagName(s)[0],
+				j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+					'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+		})(window, document, 'script', 'dataLayer', 'GTM-N5LCFRBW');</script>
+	<!-- End Google Tag Manager -->
+
+	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-G1F95KQCMX"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+
+		gtag('config', 'G-G1F95KQCMX');
+	</script>
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-33KRTS12JB"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+
+		function gtag() {
+			dataLayer.push(arguments);
+		}
+		gtag('js', new Date());
+
+		gtag('config', 'G-33KRTS12JB');
+	</script>
+
+	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDEXV7ENK0">
+	</script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+
+		gtag('config', 'G-LDEXV7ENK0');
+	</script>
+
+	<!-- Icono -->
+	<link rel="icon" href="./img/favicon1.ico">
+
+	<!-- Load Leaflet from CDN-->
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+	<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+	<!-- Load Esri Leaflet from CDN -->
+	<script src="https://unpkg.com/esri-leaflet"></script>
+
+	<!-- Esri Leaflet Geocoder -->
+	<link rel="stylesheet" href="https://unpkg.com/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.css" />
+	<script src="https://unpkg.com/esri-leaflet-geocoder"></script>
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/Leaflet.PolylineMeasure.css">
+	<link rel="stylesheet" href="css/Leaflet.StreetViewButtons.css">
+	<link rel="stylesheet" href="css/Leaflet.StreetView1Buttons.css">
+	<link rel="stylesheet" href="css/leaflet.groupedlayercontrol.min.css">
+	<link rel="stylesheet" href="css/Control.Coordinates.css">
+	<link rel="stylesheet" href="css/L.Control.MousePosition.css">
+	
+	<!-- SCRIPTS -->
+	<script src="https://unpkg.com/togeojson@0.16.0"></script>
+	<script src="scripts/Leaflet.PolylineMeasure.js"></script>
+	<script src="scripts/StreetViewButtons.js"></script>
+	<script src="scripts/StreetView1Buttons.js"></script>
+	<script src="scripts/leaflet.pattern.js"></script>
+	<script src="scripts/leaflet-tilelayer-wmts.js"></script>
+	<script src="scripts/leaflet.groupedlayercontrol.min.js"></script>
+	<script src="scripts/leaflet.browser.print.js"></script>
+	<script src="scripts/leaflet.filelayer.js"></script>
+	<script src="scripts/Control.Coordinates.js"></script>
+	<script src="scripts/L.Control.MousePosition.js"></script>
+	<script src="scripts/jquery-3.7.0.js"></script>
+	<script src="scripts/jquery-3.7.0.min.map"></script>
+	<script src="js/popups.js"></script>
+	<script src="js/iconos.js"></script>
+	<script src="scripts/Leaflet.TileLayer.MBTiles.js"></script>
+	<script src="https://unpkg.com/sql.js@0.3.2/js/sql.js"></script>
+	<script src="./Leaflet.TileLayer.MBTiles.js"></script>
+	
+	<!-- GEOJSON -->
+
+	<script type="text/javascript" src="scripts/godoycruz.js"></script>
+	<script type="text/javascript" src="scripts/Escuelas.js"></script>
+	<script type="text/javascript" src="scripts/Farmacias.js"></script>
+	<script type="text/javascript" src="scripts/JardinesMunicipales.js"></script>
+	<script type="text/javascript" src="scripts/Polideportivos.js"></script>
+	<script type="text/javascript" src="scripts/Seguridad.js"></script>
+	<script type="text/javascript" src="scripts/EspaciosVerdes.js"></script>
+	<script type="text/javascript" src="scripts/UnionesVecinales.js"></script>
+	<script type="text/javascript" src="scripts/Area1.js"></script>
+
+</head>
+
+<header>
+	<h1>Observatorio Territorial de Godoy Cruz</h1>
+	<div id="map"></div>
+
+	<div id="referencias">
+		<div class="icono_referencia" id="ref_cicloDami">Ciclovias Proyectadas:</br>2,20 Km.</div> </b>
+		<div class="icono_referencia" id="ref_cicloviasexist">Ciclovias Existentes:</br>66,86 Km.</div> </b>
+
+		<div id="caminar">
+			<div class="icono_referencia" id="ref_traza">
+				<p class="titulo"> Índice Final de Caminabilidad
+				<p class="optimo">Óptimo</p>
+				<p class="bueno">Bueno</p>
+				<p class="regular">Regular</p>
+				<p class="malo">Malo</p>
+				</p>
+			</div>
+		</div>
+	</div>
+</header>
+
+<body>
+	<!-- Google Tag Manager (noscript) -->
+	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N5LCFRBW" height="0" width="0"
+			style="display:none;visibility:hidden"></iframe></noscript>
+	<!-- End Google Tag Manager (noscript) -->
+
+	<!-- FUNCIONES LEAFLET -->
+	<script>
+		/* ARGENMAP */
+		var mapabase_argenmap = new L.TileLayer.WMTS('https://wms.ign.gob.ar/geoserver/capabaseargenmap/gwc/service/wmts?', {
+			layer: 'capabaseargenmap',
+			style: "normal",
+			tilematrixSet: "EPSG:3857",
+			format: "image/png",
+			attribution: " <a href='https://www.ign.gob.ar/AreaServicios/Argenmap/IntroduccionV2'> IGN - Argenmap v2 </a> | <a href='https://www.godoycruz.gob.ar/'>Secretaría de Ambiente, Obras y Servicios Públicos - Godoy Cruz</a> | <a href='https://github.com/mylen/leaflet.TileLayer.WMTS'>GitHub</a>&copy "
+		});
+
+		/* BASE LAYERS */
+		var esriUrl = 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+			esriAttrib = "Powered by <a href='https://www.esri.com/en-us/home'> &copyESRI </a> | <a href='https://www.godoycruz.gob.ar/'>Secretaría de Ambiente, Obras y Servicios Públicos - Godoy Cruz</a>",
+			mapabase_esri = L.tileLayer(esriUrl, {
+				maxZoom: 20,
+				attribution: esriAttrib
+			});
+
+		var osmUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+			osmAttrib = '&copy; <a href="http://openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+			mapabase_osm = L.tileLayer(osmUrl, {
+				maxZoom: 20,
+				attribution: osmAttrib
+			});
+
+		var otUrl = 'https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png',
+			otAttrib =
+				'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)',
+			mapabase_ot = L.tileLayer(otUrl, {
+				maxZoom: 20,
+				attribution: otAttrib
+			});
+
+		var googleSatelite = 'http://www.google.cn/maps/vt?lyrs=s@189&gl=cn&x={x}&y={y}&z={z}',
+			googleSateliteAttrib =
+				"Powered by &copyGoogle",
+			mapabase_googleSatelite = L.tileLayer(googleSatelite, {
+				maxZoom: 20,
+				attribution: googleSateliteAttrib
+			});
+
+		/* OVERLAYS Y GRUPOS */
+		var plazagc = L.marker([-32.92524, -68.84439]).bindPopup('Plaza GC.').openPopup(),
+
+			godoycruz = L.geoJson(godoycruz),
+			area1 = L.geoJson(Area1),
+			escuelas = L.geoJson(Escuelas, {
+				pointToLayer: crearIconoEscuela,
+				onEachFeature: agregarPopupescuelas
+			}),
+			farmacias = L.geoJson(Farmacias, {
+				pointToLayer: crearIconoFarmacias,
+				onEachFeature: agregarPopupfarmaciasgc
+			}),
+			polideportivos = L.geoJson(Polideportivos, {
+				pointToLayer: crearIconoPoli,
+				onEachFeature: agregarPopupSalud
+			}),
+			jardinesmuni = L.geoJson(JardinesMunicipales, {
+				pointToLayer: crearIconoJardmatern,
+				onEachFeature: agregarPopupjardinesmuni
+			}),
+			seguridad = L.geoJson(Seguridad, {
+				pointToLayer: crearIconoSeguridad,
+				onEachFeature: agregarPopupSalud
+			}),
+			BarriosConsolidados = L.geoJson(BarriosConsolidados, {
+				onEachFeature: agregarPopupBarriosConsolidados
+			}),
+			espverdes = L.geoJson(EspaciosVerdes, {
+				onEachFeature: agregarPopupespaciosverdes
+			}).setStyle({
+				color: "#4daf4a",
+				fillOpacity: 0.75
+			}),
+			union = L.geoJson(UnionesVecinales, {
+				pointToLayer: crearIconoVecino,
+				onEachFeature: agregarPopupPV
+			});
+
+		/* CREACIÓN DEL MAPA CON BASE LAYERS Y OVERLAYS */
+		var map = L.map('map', {
+			dragging: !L.Browser.mobile, tap: !L.Browser.mobile,
+			layers: [mapabase_googleSatelite, area1],
+		}).setView([-32.9475, -68.8277], 16);
+
+		
+		/* CREACIÓN DEL LAYERS CONTROL */
+		var baseMaps = {
+			"Argenmap": mapabase_argenmap,
+			"Google Satelital": mapabase_googleSatelite,
+		};
+		var groupedOverlays = {
+			"Equipamiento Social": {
+				"Establecimientos Educativos": escuelas,
+				"Jardines Municipales": jardinesmuni,
+				"Farmacias": farmacias,
+				"Instituciones de Seguridad": seguridad,
+				"Polideportivos": polideportivos,
+				"Uniones Vecinales": union,
+			},
+			"Infraestructura Ambiental": {
+				"Espacios Verdes": espverdes,
+			},
+		};
+		var opciones_groupedlayers = {
+			groupCheckboxes: false
+		};
+
+		L.control.mousePosition().addTo(map);
+	</script>
+
+	<script src="js/funcionesMapa.js"></script>
+</body>
+
+</html>
