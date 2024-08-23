@@ -112,6 +112,7 @@
 	<script type="text/javascript" src="scripts/EspaciosVerdes.js"></script>
 	<script type="text/javascript" src="scripts/UnionesVecinales.js"></script>
 	<script type="text/javascript" src="scripts/Area1.js"></script>
+	<script type="text/javascript" src="scripts/CentrosJubilados.js"></script>
 
 </head>
 
@@ -209,6 +210,10 @@
 				pointToLayer: crearIconoSeguridad,
 				onEachFeature: agregarPopupSalud
 			}),
+			jubilados = L.geoJson(CentrosJubilados, {
+				pointToLayer: crearIconoOficina,
+				onEachFeature: agregarPopupbarrios
+			}),
 			BarriosConsolidados = L.geoJson(BarriosConsolidados, {
 				onEachFeature: agregarPopupBarriosConsolidados
 			}),
@@ -237,6 +242,7 @@
 		};
 		var groupedOverlays = {
 			"Equipamiento Social": {
+				"Centros de Jubilados": jubilados,
 				"Establecimientos Educativos": escuelas,
 				"Jardines Municipales": jardinesmuni,
 				"Farmacias": farmacias,
